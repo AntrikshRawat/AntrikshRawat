@@ -5,6 +5,7 @@ import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../Images/about.png";
 import Toolstack from "./Toolstack";
+import UIlib from "./UIlib";
 
 function About() {
   return (
@@ -43,6 +44,10 @@ function About() {
           <strong className="purple">Tools</strong> I use
         </h1>
         <Toolstack />
+        <h1 className="project-heading">
+          <strong className="purple">UI Libraries</strong> I use
+        </h1>
+        <UIlib />
       </Container>
     </Container>
   );

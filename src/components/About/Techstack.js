@@ -9,7 +9,9 @@ import {
 } from "react-icons/di";
 import {
   SiFirebase,
-  SiTailwindcss
+  SiTailwindcss,
+  SiRedux,
+  SiExpress,
 } from "react-icons/si";
 import { BsBootstrap } from "react-icons/bs";
 
@@ -39,6 +41,12 @@ function Techstack() {
       </Col>
       <Col xs={4} md={2} className="tech-icons">
         <SiFirebase />
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiRedux/>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiExpress/>
       </Col>
     </Row>
   );
