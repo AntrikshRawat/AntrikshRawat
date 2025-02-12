@@ -14,11 +14,20 @@ function Projects() {
           Here are a few projects I've worked on recently.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Col md={4} className="project-card">
+            <ProjectCards
+              title="Bingo Game"
+              description="This Bingo game is built with Socket.io, enabling real-time multiplayer gameplay. Players can join a room, and compete in marking numbers as they are drawn. The game updates live for all players, ensuring a seamless and interactive experience.The backend is powered by Node.js and Express, while the frontend uses React for a smooth UI. Ideal for fun online Bingo matches with friends or public players!"
+              ghLink="https://github.com/AntrikshRawat/bingo-f"
+              liveLink="https://bingo-f.vercel.app/"
+            />
+          </Col>
           <Col md={4} className="project-card">
             <ProjectCards
               title="Verdant Autobots"
               description="Verdant is an innovative platform designed to promote sustainable living by connecting users with eco-friendly products and resources. Built with React and Node.js, the platform emphasizes a user-friendly interface and smooth navigation. Verdant features curated categories, responsive design, and secure token-based authentication for personalized experiences."
               ghLink="https://github.com/suhani-sharmaa/VerdantProject"
+              liveLink="https://verdant-f.vercel.app/"
             />
           </Col>
           <Col md={4} className="project-card">
@@ -27,6 +36,7 @@ function Projects() {
               title="WebBook"
               description="A personal digital notebook designed to seamlessly blend productivity with creativity. Capture your thoughts, ideas, and inspirations with ease, while planning your projects and managing tasks all in one place. With an intuitive interface and versatile features, it empowers you to stay organized effortlessly and turn your vision into reality."
               ghLink="https://github.com/AntrikshRawat/WebBook-F"
+              liveLink="https://webbook-eosin.vercel.app/"
             />
           </Col>
           <Col md={4} className="project-card">
