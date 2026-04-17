@@ -1,8 +1,1079 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap");
-body {
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+/* ========== Design Tokens ========== */
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-glass: rgba(255, 255, 255, 0.1);
+  --bg-glass-hover: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-glass-hover: rgba(255, 255, 255, 0.15);
+
+  --accent-cyan: #00f5ff;
+  --accent-purple: #b44aff;
+  --accent-magenta: #ff006e;
+  --accent-cyan-dim: rgba(0, 245, 255, 0.15);
+  --accent-purple-dim: rgba(180, 74, 255, 0.15);
+
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --glow-cyan: 0 0 20px rgba(0, 245, 255, 0.3), 0 0 40px rgba(0, 245, 255, 0.1);
+  --glow-purple:
+    0 0 20px rgba(180, 74, 255, 0.3), 0 0 40px rgba(180, 74, 255, 0.1);
+  --glow-magenta:
+    0 0 20px rgba(255, 0, 110, 0.3), 0 0 40px rgba(255, 0, 110, 0.1);
+}
+
+/* ========== Global Reset ========== */
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: "Raleway", serif !important;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to left, rgb(27 20 41), rgb(20 15 35));
+  overflow-x: hidden;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.3),
+    0 0 40px rgba(255, 255, 255, 0.1);
+}
+
+/* ========== Custom Scrollbar ========== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple));
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--accent-purple),
+    var(--accent-magenta)
+  );
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-cyan) var(--bg-primary);
+}
+
+/* ========== Utility Classes ========== */
+
+/* Glassmorphism Card */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.glass-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-glass-hover);
+  transform: translateY(-4px);
+  box-shadow: var(--glow-cyan);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--accent-cyan),
+    var(--accent-purple),
+    var(--accent-magenta)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cyan {
+  background: linear-gradient(135deg, var(--accent-cyan), #00b8d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Border */
+.glow-border {
+  position: relative;
+}
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+/* Tech Badge */
+.tech-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  background: var(--accent-cyan-dim);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  transition: all 0.3s ease;
+}
+.tech-badge:hover {
+  background: rgba(0, 245, 255, 0.25);
+  box-shadow: var(--glow-cyan);
+}
+
+.tech-badge.purple {
+  background: var(--accent-purple-dim);
+  color: var(--accent-purple);
+  border-color: rgba(180, 74, 255, 0.2);
+}
+.tech-badge.purple:hover {
+  background: rgba(180, 74, 255, 0.25);
+  box-shadow: var(--glow-purple);
+}
+
+.tech-badge.magenta {
+  background: rgba(255, 0, 110, 0.15);
+  color: var(--accent-magenta);
+  border-color: rgba(255, 0, 110, 0.2);
+}
+
+/* Section Title */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* ========== Animations ========== */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 25px rgba(0, 245, 255, 0.5),
+      0 0 50px rgba(0, 245, 255, 0.2);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes bounce-arrow {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-12px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-6px) translateX(-50%);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes typewriter-cursor {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========== Canvas Container ========== */
+.canvas-container {
+  position: fixed;
+  inset: 0; /* Shorthand for top: 0, left: 0, right: 0, bottom: 0 */
+  width: 100%;
+  height: 100dvh; /* dvh adapts to mobile browser UI bars */
+  z-index: 0; /* Keeps it behind your navbar and text */
+}
+
+.billboard-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden; /* Strict lock: internal scroll only via external mouse wheel JS */
+  overflow-x: hidden;
+  /* Hidden scrollbar — scroll is driven by main scroll via JS */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
+}
+
+.billboard-scroll::-webkit-scrollbar {
+  display: none; /* Chrome / Safari */
+}
+
+/* ========== Section Base ========== */
+.portfolio-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  padding: clamp(6rem, 12vh, 8rem) 2rem clamp(2rem, 5vh, 4rem) 2rem;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.section-content {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ========== Loading Screen ========== */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  padding: 1rem;
+  text-align: center;
+}
+
+.loader-ring {
+  width: clamp(190px, 30vw, 250px);
+  height: clamp(190px, 30vw, 250px);
+  position: relative;
+}
+
+.loader-ring svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.loader-ring circle {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.loader-ring .bg-ring {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.loader-ring .progress-ring {
+  stroke: url(#loaderGradient);
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.loader-percentage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  /* DECREASED MINIMUM AND VIEWPORT RATE: 
+     Now drops to 0.85rem on phones and scales up more slowly (3vw) */
+  font-size: clamp(1.85rem, 3vw, 2.8rem);
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.loader-name {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  opacity: 0.8;
+}
+
+.loader-subtitle {
+  margin-top: 0.5rem;
+  font-size: clamp(1.65rem, 1.5vw, 1.9rem);
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+}
+
+/* ========== Intro Animation ========== */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  pointer-events: none;
+}
+
+.intro-name-large {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0;
+  text-shadow: none !important;
+}
+
+.intro-title {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--accent-cyan);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0;
+}
+
+/* ========== Navbar ========== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(10, 10, 15, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-bottom: 1px solid var(--border-glass);
+  transition: all 0.4s ease;
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.navbar-logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.navbar-link {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: var(--font-body);
+}
+
+.navbar-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass-hover);
+}
+
+.navbar-link.active {
+  color: var(--accent-cyan);
+  background: var(--accent-cyan-dim);
+}
+
+/* Mobile nav */
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(16px);
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-glass);
+  }
+  .navbar-links.open {
+    display: flex;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+}
+
+/* ========== Hero Section ========== */
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-greeting {
+  font-size: 1.5rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(3.7rem, 8vw, 7rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-tagline .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--accent-cyan);
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  animation: typewriter-cursor 0.8s ease-in-out infinite;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  /* Uses dynamic viewport height. Pushes up to 8vh on phones so it's never hidden by Safari/Chrome bottom bars */
+  bottom: clamp(1rem, 8dvh, 2.5rem); 
+  left: 0;
+  width: 100%; /* Takes up the whole width of the parent */
+  display: flex;
+  justify-content: center; /* Flexbox guarantees perfect mathematical centering */
+  z-index: 50; /* Forces it to sit above the 3D canvas and backgrounds */
+  pointer-events: none; /* Ensures the arrow doesn't block touches/clicks on the 3D scene */
+}
+
+/* The animation is safely applied here, totally separate from the positioning */
+.hero-scroll-indicator-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: bounce-arrow 2s ease infinite;
+}
+
+.hero-scroll-indicator span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid var(--accent-cyan);
+  border-bottom: 2px solid var(--accent-cyan);
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+/* Ensure your bounce animation uses translateY, NOT translateX */
+@keyframes bounce-arrow {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ========== About Section ========== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Fluid gap: Tighter on mobile, wider on desktop */
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.about-bio {
+  /* Fluid bio text: 0.95rem on phones, 1.1rem on desktop */
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.about-edu-card {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.about-edu-label {
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-purple);
+  font-weight: 600;
+  margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
+}
+
+.about-edu-name {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.about-edu-detail {
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.about-edu-cgpa {
+  margin-top: 1rem;
+  display: inline-block;
+  font-family: var(--font-heading);
+  /* Fluid CGPA size: keeps the visual impact without overflowing */
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  font-weight: 700;
+  color: var(--accent-cyan);
+}
+
+.about-edu-cgpa span {
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 0.25rem;
+}
+
+/* ========== Skills Section ========== */
+.skills-grid {
+  display: grid;
+  /* CRITICAL FIX: min(100%, 250px) ensures that if the screen is narrower than 250px, the card simply takes up 100% of the available space instead of causing a horizontal scrollbar. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.skill-card {
+  /* Fluid padding so cards don't feel too cramped on desktop or too empty on mobile */
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.skill-category {
+  font-family: var(--font-heading);
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  color: var(--accent-cyan);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* Slightly fluid gap between individual skill pills */
+  gap: clamp(0.4rem, 1vw, 0.6rem);
+}
+
+.skill-item {
+  /* Fluid padding: Top/Bottom and Left/Right slightly adjust based on screen width */
+  padding: clamp(4px, 1vw, 6px) clamp(10px, 2vw, 14px);
+  border-radius: 8px;
+  /* Fluid font-size ensures long skill names (like 'Styled Components') don't look awkwardly massive on phones */
+  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass-hover);
+  border-color: var(--border-glass-hover);
+}
+
+/* ========== Experience Timeline ========== */
+.timeline {
+  position: relative;
+  /* Kept static to protect the math for your timeline line and dots */
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--accent-cyan),
+    var(--accent-purple),
+    var(--accent-magenta)
+  );
+  border-radius: 1px;
+}
+
+.timeline-item {
+  position: relative;
+  /* Fluid bottom padding so items are closer together on mobile, spacious on desktop */
+  padding: 0 0 clamp(1.5rem, 4vw, 2.5rem) 2rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  /* Kept static to align perfectly with the vertical line */
+  left: -2rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  border: 2px solid var(--bg-primary);
+  box-shadow: var(--glow-cyan);
+  transform: translateX(-5px);
+}
+
+.timeline-item:nth-child(2) .timeline-dot {
+  background: var(--accent-purple);
+  box-shadow: var(--glow-purple);
+}
+
+.timeline-item:nth-child(3) .timeline-dot {
+  background: var(--accent-magenta);
+  box-shadow: var(--glow-magenta);
+}
+
+.timeline-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap; /* This correctly protects against long dates overlapping long company names */
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.timeline-company {
+  font-family: var(--font-heading);
+  /* Fluid scale for the company name */
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 600;
+}
+
+.timeline-date {
+  /* Scales down slightly on mobile so it stays neatly on one line */
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  color: var(--accent-cyan);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.timeline-role {
+  /* Fluid role size */
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  color: var(--text-secondary);
+  margin-bottom: clamp(0.5rem, 1.5vw, 0.85rem);
+  font-style: italic;
+}
+
+.timeline-bullets {
+  list-style: none;
+  padding: 0;
+}
+
+.timeline-bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  /* Tighter bullet spacing on mobile */
+  margin-bottom: clamp(0.35rem, 1vw, 0.6rem);
+  /* Fluid body text prevents awkward text wrapping */
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.timeline-bullets li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--accent-cyan);
+  /* Adjusted to match the new fluid body text */
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+}
+
+/* ========== Projects ========== */
+.projects-grid {
+  display: grid;
+  /* CRITICAL FIX: min(100%, 320px) ensures cards safely shrink to fit ultra-narrow phones */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.project-card {
+  /* Fluid padding: Shrinks to 1.25rem on phones to maximize reading space */
+  padding: clamp(1.25rem, 3vw, 2rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--card-accent, var(--accent-cyan)),
+    transparent
+  );
+}
+
+.project-title {
+  font-family: var(--font-heading);
+  /* Fluid font sizing to prevent awkward word breaks on long project names */
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.project-event {
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  color: var(--text-muted);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.3rem, 1vw, 0.5rem);
+  /* Fluid bottom margin to tighten up vertical space on mobile */
+  margin-bottom: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.project-bullets {
+  list-style: none;
+  padding: 0;
+}
+
+.project-bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: clamp(0.4rem, 1.5vw, 0.6rem);
+  /* Fluid text ensures bullet points remain highly readable */
+  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.project-bullets li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--card-accent, var(--accent-cyan));
+  /* Ensure the arrow scales slightly to match the text */
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+}
+
+/* ========== Achievements ========== */
+.achievements-grid {
+  display: grid;
+  /* CRITICAL FIX: The min(100%, 280px) trick to prevent horizontal scrolling on tiny phones */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  /* Fluid gap to match the rest of your UI */
+  gap: clamp(1rem, 3vw, 1.5rem);
+}
+
+.achievement-card {
+  /* Fluid padding so the card feels balanced on both mobile and desktop */
+  padding: clamp(1rem, 3vw, 1.5rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Fluid min-height so cards don't look artificially stretched on mobile */
+  min-height: clamp(140px, 20vh, 180px);
+}
+
+.achievement-icon {
+  /* Scales the icon down slightly on phones */
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
+}
+
+.achievement-title {
+  font-family: var(--font-heading);
+  /* Fluid text prevents long achievement names from breaking awkwardly */
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-event {
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  color: var(--accent-purple);
+  margin-bottom: clamp(0.75rem, 2vw, 1rem);
+  letter-spacing: 0.05em;
+}
+
+.achievement-desc {
+  font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.achievement-stat {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 0.5rem;
+  text-shadow: var(--glow-cyan);
+}
+
+/* ========== Contact ========== */
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-text {
+  /* Fluid text size for perfect readability */
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  /* Fluid bottom margin to close the gap on mobile devices */
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+  line-height: 1.6;
+}
+
+.contact-grid {
+  display: grid;
+  /* CRITICAL FIX: Protects against horizontal scrolling on tiny phones */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.contact-card {
+  /* Fluid padding keeps the cards from looking bulky on small screens */
+  padding: clamp(1rem, 3vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 16px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--border-glass-hover);
+  transform: translateY(-5px);
+  box-shadow: var(--glow-cyan);
+}
+
+.contact-icon {
+  /* Slight scale on the icon */
+  font-size: clamp(1.15rem, 2.5vw, 1.25rem);
+  margin-bottom: 0.5rem;
+  color: var(--accent-cyan);
+}
+
+.contact-label {
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.contact-value {
+  font-weight: 500;
+  /* Fluid text prevents long emails or LinkedIn URLs from breaking the card width */
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: var(--text-primary);
+}
+
+.footer {
+  /* Fluid margins prevent the footer from feeling miles away on a phone */
+  margin-top: clamp(3rem, 8vw, 5rem);
+  padding-top: clamp(1.5rem, 4vw, 2rem);
+  border-top: 1px solid var(--border-glass);
+  font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  color: var(--text-muted);
+}
+
+/* ========== Global Mobile Responsiveness ========== */
+/* Tablet scaling compensation */
+@media (max-width: 768px) {
+  html {
+    /* Reset back to standard 16px baseline */
+    font-size: 100%;
+  }
+
+  .portfolio-section {
+    padding: clamp(4.5rem, 10vh, 6rem) 1rem 1.5rem 1rem;
+  }
+}
+
+/* Phone strict stacking and scaling compensation */
+@media (max-width: 480px) {
+  html {
+    font-size: 95%;
+  }
+
+  .portfolio-section {
+    padding: clamp(4rem, 8vh, 5rem) 0.5rem 1rem 0.5rem;
+  }
 }
