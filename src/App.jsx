@@ -6,6 +6,7 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
 import Loader from './components/Loader';
 import Navbar from './components/Navbar';
+import MusicPlayer from './components/MusicPlayer';
 import { initScrollTrigger, destroyScrollTrigger } from './components/ScrollManager';
 import Scene3D from './components/canvas/Scene3D';
 import ResponsiveCamera from './components/canvas/ResponsiveCamera';
@@ -115,6 +116,7 @@ export default function App() {
           <div className="global-footer" style={{ position: 'fixed', bottom: '1rem', left: '1rem', zIndex: 50, fontSize: '0.85rem', color: 'var(--text-muted)', fontFamily: 'var(--font-body)', opacity: 0.8 }}>
             Made With ❤️ By Antriksh Rawat
           </div>
+          <MusicPlayer/>
           <div className="scroll-container" style={{ width: '100%', height: '700vh' }} />
         </>
       )}
