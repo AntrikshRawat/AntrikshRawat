@@ -1,13 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { skills } from '../../data/resumeData';
-
+import CardCarousel from '../CardCarousel';
 
 export default function SkillsSection() {
   const sectionRef = useRef();
-  const titleRef = useRef();
-  const gridRef = useRef();
-
-  
 
   const categoryColors = {
     'Languages': 'var(--accent-cyan)',
@@ -21,7 +17,7 @@ export default function SkillsSection() {
   return (
     <section ref={sectionRef} className="portfolio-section" id="skills-section">
       <div className="section-content">
-        <div ref={titleRef} style={{ marginBottom: '1rem' }}>
+        <div style={{ marginBottom: '1rem' }}>
           <h2 className="section-title">
             <span className="gradient-text">Technical Skills</span>
           </h2>
@@ -30,7 +26,7 @@ export default function SkillsSection() {
           </p>
         </div>
 
-        <div ref={gridRef} className="skills-grid">
+        <CardCarousel>
           {Object.entries(skills).map(([category, items]) => (
             <div key={category} className="glass-card skill-card">
               <div className="skill-category" style={{ color: categoryColors[category] || 'var(--accent-cyan)' }}>
@@ -45,7 +41,7 @@ export default function SkillsSection() {
               </div>
             </div>
           ))}
-        </div>
+        </CardCarousel>
       </div>
     </section>
   );

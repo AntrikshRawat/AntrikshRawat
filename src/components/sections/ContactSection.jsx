@@ -8,8 +8,6 @@ export default function ContactSection() {
   const gridRef = useRef();
   const [copiedField, setCopiedField] = useState(null);
 
-  
-
   const handleCopy = (text, field) => {
     navigator.clipboard.writeText(text).then(() => {
       setCopiedField(field);

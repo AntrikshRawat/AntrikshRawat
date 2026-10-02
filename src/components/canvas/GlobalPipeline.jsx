@@ -2,8 +2,7 @@ import React, { useMemo } from 'react';
 import * as THREE from 'three';
 import { PIPELINE_CURVE } from '../../utils/constants';
 
-// Re-export so any files that imported from here continue to work
-export { PIPELINE_CURVE };
+
 
 export default function GlobalPipeline() {
   const tubeGeometry = useMemo(() => {

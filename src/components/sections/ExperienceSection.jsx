@@ -1,18 +1,14 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { experience } from '../../data/resumeData';
-
+import CardCarousel from '../CardCarousel';
 
 export default function ExperienceSection() {
   const sectionRef = useRef();
-  const titleRef = useRef();
-  const timelineRef = useRef();
-
-  
 
   return (
     <section ref={sectionRef} className="portfolio-section" id="experience-section">
       <div className="section-content">
-        <div ref={titleRef} style={{ marginBottom: '1rem' }}>
+        <div style={{ marginBottom: '1rem' }}>
           <h2 className="section-title">
             <span className="gradient-text-cyan">Experience</span>
           </h2>
@@ -21,27 +17,24 @@ export default function ExperienceSection() {
           </p>
         </div>
 
-        <div ref={timelineRef} className="timeline">
+        <CardCarousel>
           {experience.map((exp, i) => (
-            <div key={i} className="timeline-item">
-              <div className="timeline-dot" />
-              <div className="glass-card" style={{ padding: '1.5rem' }}>
-                <div className="timeline-header">
-                  <h3 className="timeline-company">{exp.company}</h3>
-                  <span className="timeline-date">{exp.duration}</span>
-                </div>
-                <div className="timeline-role">
-                  {exp.role} • {exp.type}
-                </div>
-                <ul className="timeline-bullets">
-                  {exp.bullets.map((bullet, j) => (
-                    <li key={j}>{bullet}</li>
-                  ))}
-                </ul>
+            <div key={i} className="glass-card experience-card">
+              <div className="exp-header">
+                <h3 className="exp-company">{exp.company}</h3>
+                <span className="exp-date">{exp.duration}</span>
               </div>
+              <div className="exp-role">
+                {exp.role} • {exp.type}
+              </div>
+              <ul className="exp-bullets">
+                {exp.bullets.map((bullet, j) => (
+                  <li key={j}>{bullet}</li>
+                ))}
+              </ul>
             </div>
           ))}
-        </div>
+        </CardCarousel>
       </div>
     </section>
   );

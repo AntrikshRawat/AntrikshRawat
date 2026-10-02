@@ -7,11 +7,9 @@ export default function Particles({ count = 2000 }) {
   const meshRef = useRef();
   const mathRef = useRef({ lastProgress: 0, velocity: 0 });
 
-  const { positions, colors, sizes, initialZ } = useMemo(() => {
+  const { positions, colors } = useMemo(() => {
     const positions = new Float32Array(count * 3);
     const colors = new Float32Array(count * 3);
-    const sizes = new Float32Array(count);
-    const initialZ = new Float32Array(count);
 
     const colorCyan = new THREE.Color(0x00f5ff);
     const colorPurple = new THREE.Color(0xb44aff);
@@ -21,9 +19,7 @@ export default function Particles({ count = 2000 }) {
       // Extensive X/Y spread, deep Z spread
       positions[i * 3] = (Math.random() - 0.5) * 120;
       positions[i * 3 + 1] = (Math.random() - 0.5) * 100;
-      const zPos = Math.random() * -350 + 50; // Vastly expanded range
-      positions[i * 3 + 2] = zPos;
-      initialZ[i] = zPos;
+      positions[i * 3 + 2] = Math.random() * -350 + 50;
 
       const color = new THREE.Color();
       
@@ -40,10 +36,9 @@ export default function Particles({ count = 2000 }) {
       colors[i * 3 + 1] = color.g;
       colors[i * 3 + 2] = color.b;
 
-      sizes[i] = Math.random() * 8 + 3;
     }
 
-    return { positions, colors, sizes, initialZ };
+    return { positions, colors };
   }, [count]);
 
   const starTexture = useMemo(() => {

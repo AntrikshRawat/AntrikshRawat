@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { achievements } from '../../data/resumeData';
+import CardCarousel from '../CardCarousel';
 
 function CountUp({ target, duration = 2 }) {
   const [count, setCount] = useState(0);
@@ -44,7 +45,7 @@ export default function AchievementsSection() {
           </p>
         </div>
 
-        <div className="achievements-grid">
+        <CardCarousel>
           {achievements.map((ach, i) => (
             <div key={i} className="glass-card achievement-card">
               <span className="achievement-icon">{ach.icon}</span>
@@ -58,7 +59,7 @@ export default function AchievementsSection() {
               <p className="achievement-desc">{ach.description}</p>
             </div>
           ))}
-        </div>
+        </CardCarousel>
       </div>
     </section>
   );

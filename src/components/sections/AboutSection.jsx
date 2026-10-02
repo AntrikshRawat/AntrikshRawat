@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { education, personalInfo } from '../../data/resumeData';
 
 
@@ -7,8 +7,6 @@ export default function AboutSection() {
   const titleRef = useRef();
   const bioRef = useRef();
   const cardRef = useRef();
-
-  
 
   return (
     <section ref={sectionRef} className="portfolio-section" id="about-section">

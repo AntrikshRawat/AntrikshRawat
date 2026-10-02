@@ -1,10 +1,9 @@
-import React, { Suspense, useRef, useMemo, useEffect, useState } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import React, { Suspense, useRef, useMemo } from "react";
+import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import {
   SECTION_POSITIONS,
   getSectionAnimationState,
-  isSectionDwelling,
   ENTRY_END,
   EXIT_START,
   TOTAL_SECTIONS,
@@ -38,8 +37,6 @@ const SECTIONS_COMPONENTS = [
   ContactSection,
 ];
 
-// ── Constants ──
-const NAVBAR_HEIGHT = 56; // px — matches the navbar's padding + content
 const CSS_BASE_WIDTH = 1000; // CSS px that fills viewport width at distanceFactor=10
 
 function BillboardSection({ component: Component, index }) {
@@ -66,8 +63,6 @@ function BillboardSection({ component: Component, index }) {
     // Get animation state (enter / dwell / exit) for this section
     const anim = getSectionAnimationState(progress, index);
 
-    // Track dwell state
-    const dwelling = isSectionDwelling(progress, index);
 
     // ── Proportional Internal Scrolling ──
     const el = scrollRef.current;

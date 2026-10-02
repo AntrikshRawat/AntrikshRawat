@@ -2,7 +2,7 @@ export const personalInfo = {
   name: "Antriksh Rawat",
   title: "Full Stack Developer",
   phone: "+91-9079864235",
-  email: "antrikshrawat2@gmail.com",
+  email: "contact@anthrix.in",
   linkedin: "https://linkedin.com/in/antriksh-rawat31",
   github: "https://github.com/AntrikshRawat",
   tagline: "Building scalable web experiences with modern technologies",
@@ -17,15 +17,48 @@ export const education = {
 };
 
 export const skills = {
-  Languages: ["JavaScript (ES6+)", "TypeScript", "Java", "C++", "SQL", "HTML", "CSS"],
+  Languages: [
+    "JavaScript (ES6+)",
+    "TypeScript",
+    "Java",
+    "C++",
+    "SQL",
+    "HTML",
+    "CSS",
+  ],
   Frontend: ["React.js", "Vite", "Tailwind CSS", "Zustand", "Redux"],
-  Backend: ["Node.js", "Express.js", "Java Spring Boot", "REST APIs", "JWT", "Socket.io", "WebRTC"],
+  Backend: [
+    "Node.js",
+    "Express.js",
+    "Java Spring Boot",
+    "REST APIs",
+    "JWT",
+    "Socket.io",
+    "WebRTC",
+  ],
   Databases: ["MongoDB", "PostgreSQL", "MySQL", "Firebase"],
   "DevOps & Tools": ["Git", "GitHub", "Vercel", "Render", "Postman"],
-  "Core Concepts": ["Data Structures & Algorithms", "OOP", "DBMS", "OS", "Computer Networks"],
+  "Core Concepts": [
+    "Data Structures & Algorithms",
+    "OOP",
+    "DBMS",
+    "OS",
+    "Computer Networks",
+  ],
 };
 
 export const experience = [
+  {
+    company: "InternPe",
+    role: "Web Developer Internship",
+    type: "Remote/On-site",
+    duration: "May 2026 – July 2026",
+    bullets: [
+      "Acquired hands-on expertise in modern JavaScript-based full-stack environments through immersive, project-driven development.",
+      "Engineered responsive and dynamic web applications by integrating React.js on the client side with a robust Node.js backend architecture.",
+      "Awarded a formal Web Developer certification from Internpe after successfully meeting all core internship deliverables.",
+    ],
+  },
   {
     company: "Cynbit Technologies",
     role: "Java Full Stack Development Intern",
@@ -61,7 +94,26 @@ export const experience = [
 
 export const projects = [
   {
-    title: "WordChain",
+    title: "ResQ-Link",
+    event: "MUJ HACKX 4.0",
+    tech: [
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "FastAPI",
+      "PyTorch",
+    ],
+    bullets: [
+      "Built a platform connecting missing person reports with rescued individuals in disaster and humanitarian crisis zones.",
+      "Implemented a multimodal AI matching pipeline integrating facial embedding via PyTorch, phonetic text matching, and demographic compatibility.",
+      "Designed a review threshold routing candidates scoring 0.60 or higher to an officer triage queue for manual approval.",
+    ],
+    color: "#ff4757",
+    githubLink: "https://github.com/AntrikshRawat/ResQ-Link",
+    previewLink: "",
+  },
+  {
+    title: "Word Chain",
     event: "LNM Hacks 8.0",
     tech: ["React", "Solidity", "Web3.js", "MetaMask"],
     bullets: [
@@ -70,6 +122,8 @@ export const projects = [
       "Designed an automated reward distribution system: 95% to the winner and 5% developer fee.",
     ],
     color: "#00f5ff",
+    githubLink: "https://github.com/AntrikshRawat/109",
+    previewLink: "https://109-umber.vercel.app",
   },
   {
     title: "Spend Manager",
@@ -82,9 +136,11 @@ export const projects = [
       "Implemented complex database relationships to handle group expense splitting and transaction history.",
     ],
     color: "#b44aff",
+    githubLink: "https://github.com/AntrikshRawat/spend-manager-f",
+    previewLink: "https://spendmnr.anthrix.in",
   },
   {
-    title: "Medicine Reminder System",
+    title: "MediAlert App",
     event: null,
     tech: ["React", "Java Spring Boot", "PostgreSQL", "Spring Scheduler"],
     bullets: [
@@ -93,6 +149,8 @@ export const projects = [
       "Designed a user-friendly React frontend allowing patients to manage prescriptions and view history.",
     ],
     color: "#ff006e",
+    githubLink: "https://github.com/AntrikshRawat/MediAlert-App",
+    previewLink: null,
   },
 ];
 
@@ -100,13 +158,15 @@ export const achievements = [
   {
     title: "SIH 2026",
     subtitle: "Smart India Hackathon",
-    description: "Qualified Prelims Round. Developed an Internship Recommendation System.",
+    description:
+      "Qualified Prelims Round. Developed an Internship Recommendation System.",
     icon: "🏆",
   },
   {
     title: "MUJ Hack 3.0",
     subtitle: "Hackathon",
-    description: "Led a team of 3 to build an AI Health Assistant that summarizes patient reports.",
+    description:
+      "Led a team of 3 to build an AI Health Assistant that summarizes patient reports.",
     icon: "🚀",
   },
   {
@@ -119,7 +179,8 @@ export const achievements = [
   {
     title: "LNM Hacks 8.0",
     subtitle: "Blockchain Hackathon",
-    description: "Successfully deployed a Web3 game with custom Smart Contracts.",
+    description:
+      "Successfully deployed a Web3 game with custom Smart Contracts.",
     icon: "⛓️",
   },
 ];

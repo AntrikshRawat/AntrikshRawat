@@ -1,17 +1,5 @@
 import * as THREE from 'three';
 
-// Color palette
-export const COLORS = {
-  bgPrimary: "#0a0a0f",
-  bgSecondary: "#12121a",
-  bgGlass: "rgba(255,255,255,0.05)",
-  accentCyan: "#00f5ff",
-  accentPurple: "#b44aff",
-  accentMagenta: "#ff006e",
-  textPrimary: "#ffffff",
-  textSecondary: "#a0a0b8",
-};
-
 // Three.js color values (hex integers)
 export const COLORS_THREE = {
   cyan: 0x00f5ff,
@@ -79,11 +67,6 @@ export const SECTION_POSITIONS = SECTION_CURVE_POINTS.map((point, i) => {
   );
 });
 
-// Camera waypoints (derived from curve, kept for compatibility)
-export const CAMERA_WAYPOINTS = SECTION_CURVE_POINTS.map((point, i) => ({
-  pos: [point.x, point.y + CAMERA_Y_OFFSET, point.z],
-  lookAt: [SECTION_POSITIONS[i].x, SECTION_POSITIONS[i].y, SECTION_POSITIONS[i].z],
-}));
 
 // ── Explicit dwell zone parameters ──────────────────────────
 // Each section gets an equal 1/7 slice of total scroll progress.
