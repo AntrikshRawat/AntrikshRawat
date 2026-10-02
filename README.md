@@ -1,16 +1,73 @@
-# React + Vite
+# Hi there, I'm Antriksh Rawat 👋
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I'm a developer who enjoys building practical full-stack applications and experimenting with AI-powered ideas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 About Me
 
-## React Compiler
+- 💻 Focused on **JavaScript/TypeScript-based development**
+- 🧠 Interested in **AI-assisted apps**, **web platforms**, and **problem-solving projects**
+- 🛠️ Building across frontend, backend, and project-based prototypes
+- 📚 Continuously learning through hands-on implementation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Expertise
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Languages:** JavaScript, TypeScript, CSS
+- **Frontend:** React ecosystem, modern UI development
+- **Backend:** Node.js, API development
+- **Database & Data:** MySQL basics, data-driven app workflows
+- **Project Domains:** Productivity tools, educational utilities, AI-inspired apps
+
+---
+
+## 🌟 Latest Project Highlight
+
+### 🔹 [bingoGame](https://github.com/AntrikshRawat/bingoGame)
+Recently updated project focused on interactive gameplay logic and UI behavior.
+
+**Why it stands out:**
+- Most recently active repository
+- Practical implementation of game flow and state handling
+- Strong demonstration of JavaScript-centric development
+
+**Primary Stack:** `JavaScript`
+
+---
+
+## 📌 Other Notable Projects
+
+- [109](https://github.com/AntrikshRawat/109) — TypeScript project
+- [Software_Defect_Prediction](https://github.com/AntrikshRawat/Software_Defect_Prediction)
+- [spend-manager-f](https://github.com/AntrikshRawat/spend-manager-f)
+- [spend-manager-backend](https://github.com/AntrikshRawat/spend-manager-backend)
+- [DocAI-Muj-hackx-3.0](https://github.com/AntrikshRawat/DocAI-Muj-hackx-3.0)
+- [MediAlert-App](https://github.com/AntrikshRawat/MediAlert-App)
+
+---
+
+## 📊 GitHub Statistics
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=AntrikshRawat&show_icons=true&theme=tokyonight&count_private=true)
+
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=AntrikshRawat&layout=compact&theme=tokyonight)
+
+![GitHub Streak](https://streak-stats.demolab.com?user=AntrikshRawat&theme=tokyonight)
+
+---
+
+## 📈 Commit & Contribution Activity
+
+![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=AntrikshRawat&theme=tokyo-night)
+
+---
+
+## 📫 Connect
+
+- GitHub: [@AntrikshRawat](https://github.com/AntrikshRawat)
+
+---
+
+_Thanks for visiting my profile! ⭐_
