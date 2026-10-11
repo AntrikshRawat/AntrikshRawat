@@ -96,13 +96,7 @@ export const projects = [
   {
     title: "ResQ-Link",
     event: "MUJ HACKX 4.0",
-    tech: [
-      "Next.js",
-      "Node.js",
-      "PostgreSQL",
-      "FastAPI",
-      "PyTorch",
-    ],
+    tech: ["Next.js", "Node.js", "PostgreSQL", "FastAPI", "PyTorch"],
     bullets: [
       "Built a platform connecting missing person reports with rescued individuals in disaster and humanitarian crisis zones.",
       "Implemented a multimodal AI matching pipeline integrating facial embedding via PyTorch, phonetic text matching, and demographic compatibility.",
@@ -113,13 +107,12 @@ export const projects = [
     previewLink: "",
   },
   {
-    title: "Word Chain",
-    event: "LNM Hacks 8.0",
-    tech: ["React", "Solidity", "Web3.js", "MetaMask"],
+    title: "109",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     bullets: [
-      "Led a team of 4 to build a Web3-based game with smart contract integration.",
-      "Implemented wallet connectivity via MetaMask and smart contracts for room entry (0.01 Monad fee).",
-      "Designed an automated reward distribution system: 95% to the winner and 5% developer fee.",
+      "Built a web-based earning and expense tracking platform tailored for local doctors performing house calls.",
+      "Developed a dashboard to log patient call details, track consultation fees, and record daily operational and travel expenses.",
+      "Designed a responsive user interface allowing practitioners to efficiently manage their financial records and analyze monthly revenue metrics.",
     ],
     color: "#00f5ff",
     githubLink: "https://github.com/AntrikshRawat/109",
